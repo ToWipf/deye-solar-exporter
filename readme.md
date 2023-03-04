@@ -4,5 +4,5 @@
 ```sh
 DOCKER_BUILDKIT=1 docker build -t x .
 
-docker run -d --name nmap_exporter -p 9042:80 nmap_exporter
+docker run -d --name solar_exporter -p 9942:9942 solar_exporter
 ```

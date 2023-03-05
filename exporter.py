@@ -19,7 +19,7 @@ def doScan(url, user, password):
         prom_output += "watt 0\nonline 0"
     return prom_output
 
-class StartScan(BaseHTTPRequestHandler):
+class WebHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
         self.end_headers()
@@ -27,7 +27,7 @@ class StartScan(BaseHTTPRequestHandler):
         return
 
 if __name__ == '__main__':
-    httpdserver = HTTPServer(('0.0.0.0', 9942), StartScan)
+    httpdserver = HTTPServer(('0.0.0.0', 9942), WebHandler)
     try:
         httpdserver.serve_forever()
     except KeyboardInterrupt:

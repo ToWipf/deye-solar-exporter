@@ -19,16 +19,20 @@ def doScan(url, user, password):
         prom_output += "watt 0\nonline 0"
     return prom_output
 
-class WebHandler(BaseHTTPRequestHandler):
+class doWeb(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
+        if self.path == "/test":
+            self.wfile.write("ok".encode())
+            return
         self.end_headers()
         self.wfile.write(doScan("192.168.2.15", 'admin', 'admin').encode())
         return
 
 if __name__ == '__main__':
-    httpdserver = HTTPServer(('0.0.0.0', 9942), WebHandler)
+    httpdserver = HTTPServer(('0.0.0.0', 9942), doWeb)
     try:
+        print("Start")
         httpdserver.serve_forever()
     except KeyboardInterrupt:
         pass

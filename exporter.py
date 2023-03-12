@@ -38,6 +38,8 @@ class doWeb(BaseHTTPRequestHandler):
         if self.path == "/test":
             self.wfile.write("ok".encode())
             return
+        if self.path == "/favicon.ico":
+            return
         self.wfile.write(buildSite("192.168.2.15", 'admin', 'admin').encode())
         return
 

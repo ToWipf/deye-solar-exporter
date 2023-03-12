@@ -1,4 +1,4 @@
-# sun600g3-eu-230 exporter Prometheus
+# Deye sun600g3-eu-230 Exporter for Prometheus
 
 ## Build:
 

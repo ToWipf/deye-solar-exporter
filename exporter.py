@@ -5,7 +5,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 def doScan(url, user, password):
     print("Start Request")
     try:
-        data = requests.get("http://{}/status.html".format(url), auth=(user,password))
+        data = requests.get("http://{}/status.html".format(url), auth=(user,password), timeout=20)
         for zeile in data.text.split('\n'):
             if 'var webdata_now_p' in zeile:
                 watt_now=zeile
@@ -14,8 +14,8 @@ def doScan(url, user, password):
                 watt_now=watt_now[left_texter:right_texter]
                 print("Data", watt_now)
                 return int(watt_now)
-    except Exception:
-        print("No Data", Exception)
+    except Exception as e:
+        print("No Data", str(e))
         return -1
     print("No Val")
     return -2

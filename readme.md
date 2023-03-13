@@ -12,6 +12,6 @@ docker run -d --name solar_exporter -p 9942:9942 solar_exporter
 
 ```yml
 # Solar Exporter
-watt 6
+watt 120
 online 1
 ```

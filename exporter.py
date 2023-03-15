@@ -42,6 +42,8 @@ class doWeb(BaseHTTPRequestHandler):
             return
         self.wfile.write(buildSite("192.168.2.15", 'admin', 'admin').encode())
         return
+    def log_message(self, format, *args):
+        return
 
 if __name__ == '__main__':
     httpdserver = HTTPServer(('0.0.0.0', 9942), doWeb)

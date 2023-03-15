@@ -6,4 +6,4 @@ HEALTHCHECK --interval=120s --start-period=30s CMD curl --fail http://localhost:
 # With logging
 #CMD ["python3","-u","exporter.py"]
 # Logging off
-CMD ["exporter.py"]
+CMD ["/exporter.py"]

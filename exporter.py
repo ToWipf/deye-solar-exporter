@@ -3,7 +3,7 @@ import requests
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 def doScan(url, user, password):
-    print("Start Request")
+#    print("Start Request")
     try:
         data = requests.get("http://{}/status.html".format(url), auth=(user,password), timeout=20)
         for zeile in data.text.split('\n'):
@@ -12,23 +12,23 @@ def doScan(url, user, password):
                 left_texter = watt_now.find('"', 0, len(watt_now)) + 1
                 right_texter = watt_now.find('"', left_texter, len(watt_now) )
                 watt_now=watt_now[left_texter:right_texter]
-                print("Data", watt_now)
+#                print("Data", watt_now)
                 return int(watt_now)
     except Exception as e:
-        print("No Data", str(e))
+#        print("No Data", str(e))
         return -1
-    print("No Val")
+#    print("No Val")
     return -2
 
 def buildSite(url, user, password):
-    print("Beginn")
+#    print("Beginn")
     prom_output = "# Solar Exporter\n"
     wattVal = doScan(url, user, password)
     if (wattVal >= 0):
         prom_output += "watt {}\nonline 1".format(wattVal)
     else:
         prom_output += "watt 0\nonline 0"
-    print("End")
+#    print("End")
     return prom_output
 
 class doWeb(BaseHTTPRequestHandler):
@@ -46,9 +46,9 @@ class doWeb(BaseHTTPRequestHandler):
 if __name__ == '__main__':
     httpdserver = HTTPServer(('0.0.0.0', 9942), doWeb)
     try:
-        print("Start Webserver")
+#        print("Start Webserver")
         httpdserver.serve_forever()
     except KeyboardInterrupt:
         pass
         httpdserver.server_close()
-    print("End Webserver")
+#    print("End Webserver")

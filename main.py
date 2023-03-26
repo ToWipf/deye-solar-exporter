@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 import solarApi, solarWeb
 from http.server import BaseHTTPRequestHandler, HTTPServer
+import time
 
 DEYE_IP = "192.168.2.15"
 DEYE_USER = "admin"
 DEYE_PASSWORD = "admin"
 
 def buildSite(url, user, password):
+    # Start Time
+    st = time.time()
+    
     prom_output = "# Solar Exporter\n"
     
     data1 = solarWeb.getWebWatt(url, user, password)
@@ -15,7 +19,8 @@ def buildSite(url, user, password):
         prom_output += "watt {}\nonline 1".format(data1)
     else:
         return "watt 0\nonline 0"
-        
+    
+    # Die erweiterten Daten nur holen, wenn das Geraet auch online ist
     data2 = solarApi.getSolarData(url)
     if (data2):
         prom_output += "\nvoltage{panel=1} " + str(data2.p1Voltage)
@@ -23,6 +28,11 @@ def buildSite(url, user, password):
         prom_output += "\nvoltage{panel=2} " + str(data2.p2Voltage)
         prom_output += "\ncurrent{panel=2} " + str(data2.p2Current)
         prom_output += "\ntemperature " + str(data2.temperature)
+
+    # End Time
+    et = time.time()
+    prom_output += "\nexecutiontime " + str(round (et - st))
+
     return prom_output
 
 class doWeb(BaseHTTPRequestHandler):

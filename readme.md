@@ -1,8 +1,14 @@
 # Deye sun600g3-eu-230 Exporter for Prometheus
 
+Prometheus Exporter for Deye Solar inverter. 
+
+Depending on the WiFi stability, the data is queried faster or slower. To give the exporter enough time, the Prometheus timeout should be set to at least one minute.
+
+Runs fine on a Raspberry Pi with Docker
+
 ## Config
 
-currently still in the main and solarApi files. Customise bevor build
+currently still in the main and solarApi files. Customise it before build
 
 ## Build
 
@@ -16,11 +22,12 @@ docker run -d --name solar_exporter -p 9942:9942 solar_exporter
 
 ```yml
 # Solar Exporter
-watt 11
+watt 40
 online 1
-voltage{panel=1} 22.9
-current{panel=1} 0.1
-voltage{panel=2} 23.8
-current{panel=2} 0.1
-temperature 9.0
+voltage{panel="1"} 27.1
+current{panel="1"} 0.8
+voltage{panel="2"} 28.2
+current{panel="2"} 0.6
+temperature 9.6
+executiontime 20
 ```

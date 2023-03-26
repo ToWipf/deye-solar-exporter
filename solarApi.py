@@ -48,7 +48,7 @@ def doSolarXMBhex(wr_ipadress, cmd):
 
 def doSolarXMBdec(wr_ipadress, cmd):
     hexwert = doSolarXMBhex(wr_ipadress, cmd)
-    if ("fail" in hexwert):
+    if ("fail" in hexwert or hexwert == ""):
         return -99 # Als Fehlercode ausgeben
     decwert = int(hexwert, 16) / 10
     print("DecWert: ", decwert)
@@ -63,13 +63,6 @@ def getSolarData(wr_ipadress):
     sd.p2Current = doSolarXMBdec(wr_ipadress, "00700001")
     sd.temperature = doSolarXMBdec(wr_ipadress, "005A0001") / 10 - 10
     return sd
-
-
-def getSolarDataSave(wr_ipadress):
-    try:
-        return getSolarData(wr_ipadress)
-    except:
-        return None
 
 
 # Just for local testing

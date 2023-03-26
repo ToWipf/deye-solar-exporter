@@ -14,10 +14,11 @@ def buildSite(url, user, password):
         
     data2 = solarApi.getSolarData(url)
     if (data2):
-        prom_output += "\np1Voltage " + str(data2.p1Voltage)
-        prom_output += "\np1Current " + str(data2.p1Current)
-        prom_output += "\np2Voltage " + str(data2.p2Voltage)
-        prom_output += "\np2Current " + str(data2.p2Current)
+        prom_output += "\nvoltage{panel=1} " + str(data2.p1Voltage)
+        prom_output += "\ncurrent{panel=1} " + str(data2.p1Current)
+        prom_output += "\nvoltage{panel=2} " + str(data2.p2Voltage)
+        prom_output += "\ncurrent{panel=2} " + str(data2.p2Current)
+        prom_output += "\ntemperature " + str(data2.temperature)
     return prom_output
 
 class doWeb(BaseHTTPRequestHandler):

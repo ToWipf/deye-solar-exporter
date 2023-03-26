@@ -3,7 +3,7 @@
 import subprocess
 
 MAXTRYS = 20
-DEYE_CMD_PATH = "deye_cmd"
+DEYE_CMD_PATH = "/deye_cmd"
 
 class SolarData:
     def __init__(self):
@@ -11,7 +11,7 @@ class SolarData:
         self.p1Current = 0
         self.p2Voltage = 0
         self.p2Current = 0
-        self.temperatur = 0
+        self.temperature = 0
 
 
 def doSolar(wr_ipadress, cmd):
@@ -43,15 +43,13 @@ def doTrySloar(wr_ipadress, cmd):
 def doSolarXMBhex(wr_ipadress, cmd):
     hexwert = doTrySloar(wr_ipadress, "-xmb {}".format(cmd))
     print("HexWert: ", hexwert)
-    if ("fail" in hexwert):
-        raise Exception('fail, no Val')
     return hexwert
 
 
 def doSolarXMBdec(wr_ipadress, cmd):
     hexwert = doSolarXMBhex(wr_ipadress, cmd)
-
-    # umwandeln hex --> dec, geteit durch 10
+    if ("fail" in hexwert):
+        return -99 # Als Fehlercode ausgeben
     decwert = int(hexwert, 16) / 10
     print("DecWert: ", decwert)
     return decwert
@@ -63,7 +61,7 @@ def getSolarData(wr_ipadress):
     sd.p1Current = doSolarXMBdec(wr_ipadress, "006e0001")
     sd.p2Voltage = doSolarXMBdec(wr_ipadress, "006f0001")
     sd.p2Current = doSolarXMBdec(wr_ipadress, "00700001")
-    sd.temperatur = doSolarXMBdec(wr_ipadress, "005A0001") / 10 - 10
+    sd.temperature = doSolarXMBdec(wr_ipadress, "005A0001") / 10 - 10
     return sd
 
 
@@ -79,6 +77,7 @@ if __name__ == '__main__':
     x = getSolarData("192.168.2.15")
 
     print("_____________")
+    print("temperature", x.temperature)
     print("p1Voltage", x.p1Voltage)
     print("p1Current", x.p1Current)
     print("p1Watt", x.p1Current * x.p1Voltage)

@@ -2,6 +2,10 @@
 import solarApi, solarWeb
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
+DEYE_IP = "192.168.2.15"
+DEYE_USER = "admin"
+DEYE_PASSWORD = "admin"
+
 def buildSite(url, user, password):
     prom_output = "# Solar Exporter\n"
     
@@ -30,7 +34,7 @@ class doWeb(BaseHTTPRequestHandler):
             return
         if self.path == "/favicon.ico":
             return
-        self.wfile.write(buildSite("192.168.2.15", 'admin', 'admin').encode())
+        self.wfile.write(buildSite(DEYE_IP, DEYE_USER, DEYE_PASSWORD).encode())
         return
     def log_message(self, format, *args):
         return

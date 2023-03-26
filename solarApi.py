@@ -2,7 +2,7 @@
 
 import subprocess
 
-MAXTRYS = 20
+MAXTRYS = 10
 DEYE_CMD_PATH = "/deye_cmd"
 
 class SolarData:
@@ -72,11 +72,10 @@ def getSolarDataSave(wr_ipadress):
         return None
 
 
+# Just for local testing
 if __name__ == '__main__':
-
     x = getSolarData("192.168.2.15")
 
-    print("_____________")
     print("temperature", x.temperature)
     print("p1Voltage", x.p1Voltage)
     print("p1Current", x.p1Current)
@@ -84,4 +83,3 @@ if __name__ == '__main__':
     print("p2Voltage", x.p2Voltage)
     print("p2Current", x.p2Current)
     print("p2Watt", x.p2Voltage * x.p2Current)
-    print("_____________")

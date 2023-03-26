@@ -23,10 +23,10 @@ def buildSite(url, user, password):
     # Die erweiterten Daten nur holen, wenn das Geraet auch online ist
     data2 = solarApi.getSolarData(url)
     if (data2):
-        prom_output += "\nvoltage{panel=1} " + str(data2.p1Voltage)
-        prom_output += "\ncurrent{panel=1} " + str(data2.p1Current)
-        prom_output += "\nvoltage{panel=2} " + str(data2.p2Voltage)
-        prom_output += "\ncurrent{panel=2} " + str(data2.p2Current)
+        prom_output += "\nvoltage{panel='1'} " + str(data2.p1Voltage)
+        prom_output += "\ncurrent{panel='1'} " + str(data2.p1Current)
+        prom_output += "\nvoltage{panel='2'} " + str(data2.p2Voltage)
+        prom_output += "\ncurrent{panel='2'} " + str(data2.p2Current)
         prom_output += "\ntemperature " + str(data2.temperature)
 
     # End Time

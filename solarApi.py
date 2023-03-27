@@ -19,10 +19,12 @@ def doSolar(wr_ipadress, cmd):
         print("START")
         cmdx = "-t {}:{} {}".format(wr_ipadress, 48899, cmd)
         command = '{} {}'.format(DEYE_CMD_PATH, cmdx)
-        x = subprocess.check_output(command, shell=True, stderr=subprocess.STDOUT).decode("utf-8")
-        if ("ok" in x):
-            dataLine = x.split("\n")[1]
-            return dataLine[dataLine.find('ok')+3+6:-4]
+        output = subprocess.check_output(command, shell=True, stderr=subprocess.STDOUT).decode("utf-8")
+        if ("ok" in output):
+            dataLine = output.split("\n")[1]
+            data4b = dataLine[dataLine.find('ok')+3+6:-4]
+            if len(data4b) == 4:
+                return data4b
         return "fail"
     except:
         return "fail"

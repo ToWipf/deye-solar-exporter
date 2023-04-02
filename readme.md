@@ -8,6 +8,12 @@ Runs fine on a Raspberry Pi with Docker
 
 The exporter is based on https://github.com/s10l/deye-logger-at-cmd
 
+## Grafana
+
+Dashboard example: [grafana.json](grafana/grafana.json)
+
+![image](grafana/grafana.PNG)
+
 ## Build
 
 ```sh

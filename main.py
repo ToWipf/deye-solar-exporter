@@ -10,24 +10,24 @@ DEYE_PASSWORD = "admin"
 def buildSite(url, user, password):
     # Start Time
     st = time.time()
-    
+
     prom_output = "# Solar Exporter\n"
-    
+
     dataWeb = solarWeb.doTryWebWatt(url, user, password)
-    
+
     if (dataWeb >= 0):
         prom_output += "watt {}\nonline 1".format(dataWeb)
+
+        # Die erweiterten Daten nur holen, wenn das Geraet auch online ist
+        dataApi = solarApi.getSolarData(url)
+        if (dataApi):
+            prom_output += "\nvoltage{panel=\"1\"} " + str(dataApi.p1Voltage)
+            prom_output += "\ncurrent{panel=\"1\"} " + str(dataApi.p1Current)
+            prom_output += "\nvoltage{panel=\"2\"} " + str(dataApi.p2Voltage)
+            prom_output += "\ncurrent{panel=\"2\"} " + str(dataApi.p2Current)
+            prom_output += "\ntemperature " + str(dataApi.temperature)
     else:
-        return "watt 0\nonline 0"
-    
-    # Die erweiterten Daten nur holen, wenn das Geraet auch online ist
-    dataApi = solarApi.getSolarData(url)
-    if (dataApi):
-        prom_output += "\nvoltage{panel=\"1\"} " + str(dataApi.p1Voltage)
-        prom_output += "\ncurrent{panel=\"1\"} " + str(dataApi.p1Current)
-        prom_output += "\nvoltage{panel=\"2\"} " + str(dataApi.p2Voltage)
-        prom_output += "\ncurrent{panel=\"2\"} " + str(dataApi.p2Current)
-        prom_output += "\ntemperature " + str(dataApi.temperature)
+        prom_output += "watt 0\nonline 0"
 
     # End Time
     et = time.time()

@@ -6,6 +6,8 @@ Depending on the WiFi stability, the data is queried faster or slower. To give t
 
 Runs fine on a Raspberry Pi with Docker
 
+The exporter is based on https://github.com/s10l/deye-logger-at-cmd
+
 ## Config
 
 currently still in the main and solarApi files. Customise it before build

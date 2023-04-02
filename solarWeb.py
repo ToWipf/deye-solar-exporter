@@ -2,6 +2,8 @@
 
 import requests
 
+MAXTRYS = 10
+
 
 def getWebWatt(url, user, password):
     try:
@@ -14,6 +16,16 @@ def getWebWatt(url, user, password):
     except Exception:
         return -1
     return -2
+
+
+def doTryWebWatt(url, user, password):
+    i = 1
+    while i < MAXTRYS:
+        i += 1
+        wert = getWebWatt(url, user, password)
+        if (wert >= 0):
+            return wert
+    return -1
 
 
 # Just for local testing

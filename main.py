@@ -13,21 +13,21 @@ def buildSite(url, user, password):
     
     prom_output = "# Solar Exporter\n"
     
-    data1 = solarWeb.getWebWatt(url, user, password)
+    dataWeb = solarWeb.doTryWebWatt(url, user, password)
     
-    if (data1 >= 0):
-        prom_output += "watt {}\nonline 1".format(data1)
+    if (dataWeb >= 0):
+        prom_output += "watt {}\nonline 1".format(dataWeb)
     else:
         return "watt 0\nonline 0"
     
     # Die erweiterten Daten nur holen, wenn das Geraet auch online ist
-    data2 = solarApi.getSolarData(url)
-    if (data2):
-        prom_output += "\nvoltage{panel=\"1\"} " + str(data2.p1Voltage)
-        prom_output += "\ncurrent{panel=\"1\"} " + str(data2.p1Current)
-        prom_output += "\nvoltage{panel=\"2\"} " + str(data2.p2Voltage)
-        prom_output += "\ncurrent{panel=\"2\"} " + str(data2.p2Current)
-        prom_output += "\ntemperature " + str(data2.temperature)
+    dataApi = solarApi.getSolarData(url)
+    if (dataApi):
+        prom_output += "\nvoltage{panel=\"1\"} " + str(dataApi.p1Voltage)
+        prom_output += "\ncurrent{panel=\"1\"} " + str(dataApi.p1Current)
+        prom_output += "\nvoltage{panel=\"2\"} " + str(dataApi.p2Voltage)
+        prom_output += "\ncurrent{panel=\"2\"} " + str(dataApi.p2Current)
+        prom_output += "\ntemperature " + str(dataApi.temperature)
 
     # End Time
     et = time.time()

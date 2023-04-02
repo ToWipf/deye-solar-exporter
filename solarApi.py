@@ -16,7 +16,7 @@ class SolarData:
 
 def doSolar(wr_ipadress, cmd):
     try:
-        print("START")
+#        print("START")
         cmdx = "-t {}:{} {}".format(wr_ipadress, 48899, cmd)
         command = '{} {}'.format(DEYE_CMD_PATH, cmdx)
         x = subprocess.check_output(command, shell=True, stderr=subprocess.STDOUT).decode("utf-8")
@@ -33,16 +33,16 @@ def doTrySloar(wr_ipadress, cmd):
     while i < MAXTRYS:
         i += 1
         wert = doSolar(wr_ipadress, cmd)
-        if ("fail" in wert):
-            print("no Value")
-        else:
+        if not ("fail" in wert):
             return wert
+#        else:
+#            print("no Value")
     return "fail"
 
 
 def doSolarXMBhex(wr_ipadress, cmd):
     hexwert = doTrySloar(wr_ipadress, "-xmb {}".format(cmd))
-    print("HexWert: ", hexwert)
+#    print("HexWert: ", hexwert)
     return hexwert
 
 
@@ -51,7 +51,7 @@ def doSolarXMBdec(wr_ipadress, cmd):
     if ("fail" in hexwert or hexwert == ""):
         return -99 # Als Fehlercode ausgeben
     decwert = int(hexwert, 16) / 10
-    print("DecWert: ", decwert)
+#    print("DecWert: ", decwert)
     return decwert
 
 

@@ -2,10 +2,11 @@
 import solarApi, solarWeb
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import time
+import os
 
-DEYE_IP = "192.168.2.15"
-DEYE_USER = "admin"
-DEYE_PASSWORD = "admin"
+DEYE_IP = ""
+DEYE_USER = ""
+DEYE_PASSWORD = ""
 
 def buildSite(url, user, password):
     # Start Time
@@ -50,6 +51,21 @@ class doWeb(BaseHTTPRequestHandler):
         return
 
 if __name__ == '__main__':
+    DEYE_IP = os.getenv('DEYE_IP', "")
+    DEYE_USER = os.getenv('DEYE_USER', "admin")
+    DEYE_PASSWORD = os.getenv('DEYE_PASSWORD', "admin")
+
+    if (DEYE_IP==""):
+        print("No Config found, please set Environment variables like this:")
+        print("DEYE_IP=192.168.2.15")
+        print("DEYE_USER=admin")
+        print("DEYE_PASSWORD=admin")
+        exit(255)
+
+    print("DEYE_IP:", DEYE_IP)
+    print("DEYE_USER:", DEYE_USER)
+    print("DEYE_PASSWORD:", DEYE_PASSWORD)
+
     httpdserver = HTTPServer(('0.0.0.0', 9942), doWeb)
     try:
         print("Start Webserver")

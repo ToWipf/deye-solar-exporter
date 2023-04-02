@@ -8,16 +8,21 @@ Runs fine on a Raspberry Pi with Docker
 
 The exporter is based on https://github.com/s10l/deye-logger-at-cmd
 
-## Config
-
-currently still in the main and solarApi files. Customise it before build
-
 ## Build
 
 ```sh
 DOCKER_BUILDKIT=1 docker build --progress=plain -t solar_exporter .
+```
 
-docker run -d --name solar_exporter -p 9942:9942 solar_exporter
+## Run
+
+```sh
+docker run -d --name solar_exporter \
+    -p 9942:9942 \
+    -e DEYE_IP=192.168.2.15 \
+    -e DEYE_USER=admin \
+    -e DEYE_PASSWORD=admin \
+    solar_exporter
 ```
 
 ## Example output

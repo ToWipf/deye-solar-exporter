@@ -5,7 +5,7 @@ import subprocess
 MAXTRYS = 10
 DEYE_CMD_PATH = "/deye_cmd"
 
-class SolarData:
+class SolarDataApi:
     def __init__(self):
         self.p1Voltage = 0
         self.p1Current = 0
@@ -57,8 +57,8 @@ def doSolarXMBdec(wr_ipadress, cmd):
     return decwert
 
 
-def getSolarData(wr_ipadress):
-    sd = SolarData()
+def getSolarDataApi(wr_ipadress):
+    sd = SolarDataApi()
     sd.p1Voltage = doSolarXMBdec(wr_ipadress, "006d0001")
     sd.p1Current = doSolarXMBdec(wr_ipadress, "006e0001")
     sd.p2Voltage = doSolarXMBdec(wr_ipadress, "006f0001")
@@ -69,7 +69,7 @@ def getSolarData(wr_ipadress):
 
 # Just for local testing
 if __name__ == '__main__':
-    x = getSolarData("192.168.2.15")
+    x = getSolarDataApi("192.168.2.15")
 
     print("temperature", x.temperature)
     print("p1Voltage", x.p1Voltage)

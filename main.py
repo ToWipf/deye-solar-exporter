@@ -16,8 +16,10 @@ def buildSite(url, user, password):
 
     dataWeb = solarWeb.doTryWebWatt(url, user, password)
 
-    if (dataWeb >= 0):
-        prom_output += "watt {}\nonline 1".format(dataWeb)
+    if (dataWeb != None):
+        prom_output += "watt {}\n".format(dataWeb.webdata_now_p)
+        prom_output += "total_e {}\n".format(dataWeb.webdata_total_e)
+        prom_output += "online 1"
 
         # Die erweiterten Daten nur holen, wenn das Geraet auch online ist
         dataApi = solarApi.getSolarData(url)

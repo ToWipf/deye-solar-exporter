@@ -57,7 +57,7 @@ def doSolarXMBdec(wr_ipadress, cmd):
     return decwert
 
 
-def getSolarDataApi(wr_ipadress):
+def getSolarData(wr_ipadress):
     sd = SolarDataApi()
     sd.p1Voltage = doSolarXMBdec(wr_ipadress, "006d0001")
     sd.p1Current = doSolarXMBdec(wr_ipadress, "006e0001")

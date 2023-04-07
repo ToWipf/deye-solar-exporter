@@ -11,8 +11,8 @@ class SolarDataWeb:
 
 
 def getWebWatt(url, user, password):
-    sdw = SolarDataWeb()
     try:
+        sdw = SolarDataWeb()
         data = requests.get("http://{}/status.html".format(url), auth=(user, password), timeout=20)
         for zeile in data.text.split('\n'):
             if 'var webdata_now_p' in zeile:
@@ -35,12 +35,12 @@ def doTryWebWatt(url, user, password):
         wert = getWebWatt(url, user, password)
         if (wert != None):
             return wert
-    return -1
+    return None
 
 
 # Just for local testing
 if __name__ == '__main__':
-    sd = getWebWatt("192.168.2.15", "admin", "admin")
+    sd = doTryWebWatt("192.168.2.16", "admin", "admin")
     if (sd != None):
         print(sd.webdata_now_p)
         print(sd.webdata_total_e)

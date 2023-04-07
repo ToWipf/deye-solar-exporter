@@ -35,12 +35,13 @@ docker run -d --name solar_exporter \
 
 ```yml
 # Solar Exporter
-watt 40
+watt 555
+total_e 22.2
 online 1
-voltage{panel="1"} 27.1
-current{panel="1"} 0.8
-voltage{panel="2"} 28.2
-current{panel="2"} 0.6
-temperature 9.6
-executiontime 20
+voltage{panel="1"} 31.1
+current{panel="1"} 9.4
+voltage{panel="2"} 32.0
+current{panel="2"} 8.1
+temperature 32.7
+executiontime 22
 ```

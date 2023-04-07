@@ -4,6 +4,7 @@ import requests
 
 MAXTRYS = 10
 
+
 class SolarDataWeb:
     def __init__(self):
         self.webdata_now_p = 0
@@ -40,7 +41,7 @@ def doTryWebWatt(url, user, password):
 
 # Just for local testing
 if __name__ == '__main__':
-    sd = doTryWebWatt("192.168.2.16", "admin", "admin")
+    sd = doTryWebWatt("192.168.2.15", "admin", "admin")
     if (sd != None):
         print(sd.webdata_now_p)
         print(sd.webdata_total_e)

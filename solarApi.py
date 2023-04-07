@@ -5,6 +5,7 @@ import subprocess
 MAXTRYS = 10
 DEYE_CMD_PATH = "/deye_cmd"
 
+
 class SolarDataApi:
     def __init__(self):
         self.p1Voltage = 0
@@ -16,7 +17,6 @@ class SolarDataApi:
 
 def doSolar(wr_ipadress, cmd):
     try:
-#        print("START")
         cmdx = "-t {}:{} {}".format(wr_ipadress, 48899, cmd)
         command = '{} {}'.format(DEYE_CMD_PATH, cmdx)
         output = subprocess.check_output(command, shell=True, stderr=subprocess.STDOUT).decode("utf-8")
@@ -51,7 +51,7 @@ def doSolarXMBhex(wr_ipadress, cmd):
 def doSolarXMBdec(wr_ipadress, cmd):
     hexwert = doSolarXMBhex(wr_ipadress, cmd)
     if ("fail" in hexwert or hexwert == ""):
-        return -99 # Als Fehlercode ausgeben
+        return -99  # Als Fehlercode ausgeben
     decwert = int(hexwert, 16) / 10
 #    print("DecWert: ", decwert)
     return decwert
@@ -69,7 +69,7 @@ def getSolarData(wr_ipadress):
 
 # Just for local testing
 if __name__ == '__main__':
-    x = getSolarDataApi("192.168.2.15")
+    x = getSolarData("192.168.2.15")
 
     print("temperature", x.temperature)
     print("p1Voltage", x.p1Voltage)

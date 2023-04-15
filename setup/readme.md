@@ -2,11 +2,12 @@
 
 ## Docker install
 
+for example on an raspberry pi
+
 ```sh
-    apt install docker
-    apt install docker-compose
+apt install docker docker-compose
 ```
-## Bulid solar-exporter
+## Bulid solar-exporter Container
 
 ```sh
 DOCKER_BUILDKIT=1 docker build --progress=plain -t solar-exporter .
@@ -30,11 +31,9 @@ cd setup
 docker-compose up -d
 ```
 
-## Test
-
-Web:
+Now these ports should display content:
 - solar-exporter: http://localhost:9942
-- Prometheus: http://localhost:9090
+- Prometheus: http://localhost:9090/targets
 - Grafana: http://localhost:3000
 
 ## Setup Grafana

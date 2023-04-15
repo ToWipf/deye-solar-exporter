@@ -41,4 +41,4 @@ Web:
 
 1.  Login (admin, admin)
 1.  Add Datasource (Prometheus / http://prometheus:9090)
-1.  Import Dashboard
+1.  Import Dashboard [grafana.json](grafana.json)

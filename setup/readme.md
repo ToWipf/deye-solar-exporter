@@ -1,37 +1,44 @@
+# Test Setup
 
-# docker setup
+## Docker install
+
+```sh
     apt install docker
     apt install docker-compose
-	
-	docker ps             
+```
+## Bulid solar-exporter
 
+```sh
+DOCKER_BUILDKIT=1 docker build --progress=plain -t solar-exporter .
+```
 
-docker-compose Konfiguration 
-    ./deye_solar_exporter/setup/docker-compose.yml
+## docker-compose Settings
 
+edit "DEYE_IP, DEYE_USER, DEYE_PASSWORD" in ./setup/docker-compose.yml
 
+```sh
+mkdir setup/grafana_data
+mkdir setup/prometheus_data
+chmod 777 setup/grafana_data
+chmod 777 setup/prometheus_data
+```
 
+## Start
 
+```sh
+cd setup
+docker-compose up -d
+```
 
-## docker bulid solar_exporter
-    DOCKER_BUILDKIT=1 docker build --progress=plain -t solar-exporter .
+## Test
 
+Web:
+- solar-exporter: http://localhost:9942
+- Prometheus: http://localhost:9090
+- Grafana: http://localhost:3000
 
-    chmod 777 ./deye_solar_exporter/setup/grafana_data
-    chmod 777 ./deye_solar_exporter/setup/prometheus_data
+## Setup Grafana
 
-
-
-Starten: 
-
-
-Web Aufruf: 
-    solar-exporter: http://localhost:9942
-    Prometheus:     http://localhost:9090
-    Grafana:        http://localhost:3000
-    
-    
-    
-    
-
-https://github.com/Jo-Fri/solar-exporter.git
+1.  Login (admin, admin)
+1.  Add Datasource (Prometheus / http://prometheus:9090)
+1.  Import Dashboard

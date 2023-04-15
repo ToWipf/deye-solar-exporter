@@ -1,2 +1,5 @@
 deye_cmd
+desktop.ini
 /__pycache__
+/setup/grafana_data
+/setup/prometheus_data

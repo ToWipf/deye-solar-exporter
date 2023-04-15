@@ -12,9 +12,9 @@ The exporter is based on https://github.com/s10l/deye-logger-at-cmd
 
 ## Grafana
 
-Dashboard example: [grafana.json](setup/grafana/grafana.json)
+Dashboard example: [grafana.json](setup/grafana.json)
 
-![image](setup/grafana/grafana.PNG)
+![image](setup/grafana.PNG)
 
 ## Build
 

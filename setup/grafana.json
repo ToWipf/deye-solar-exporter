@@ -25,14 +25,16 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 15,
+  "id": 1,
   "links": [
     {
       "asDropdown": false,
       "icon": "external link",
       "includeVars": false,
       "keepTime": false,
-      "tags": ["ok"],
+      "tags": [
+        "ok"
+      ],
       "targetBlank": false,
       "title": "New link",
       "tooltip": "",
@@ -82,7 +84,9 @@
       "options": {
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -220,7 +224,11 @@
       "id": 2,
       "options": {
         "legend": {
-          "calcs": ["min", "max", "mean"],
+          "calcs": [
+            "min",
+            "max",
+            "mean"
+          ],
           "displayMode": "table",
           "placement": "bottom",
           "showLegend": true
@@ -353,6 +361,70 @@
       "datasource": {
         "type": "prometheus"
       },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "kwatth"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 0,
+        "y": 5
+      },
+      "id": 14,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.3.6",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus"
+          },
+          "editorMode": "builder",
+          "expr": "today_e",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Tages Leistung",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -396,10 +468,10 @@
         ]
       },
       "gridPos": {
-        "h": 4,
+        "h": 2,
         "w": 3,
         "x": 0,
-        "y": 5
+        "y": 7
       },
       "id": 12,
       "options": {
@@ -408,7 +480,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -427,7 +501,7 @@
           "refId": "A"
         }
       ],
-      "title": "Total",
+      "title": "Total Leistung",
       "type": "stat"
     },
     {
@@ -515,7 +589,11 @@
       "id": 7,
       "options": {
         "legend": {
-          "calcs": ["min", "max", "mean"],
+          "calcs": [
+            "min",
+            "max",
+            "mean"
+          ],
           "displayMode": "table",
           "placement": "bottom",
           "showLegend": true
@@ -625,7 +703,11 @@
       "id": 8,
       "options": {
         "legend": {
-          "calcs": ["min", "max", "mean"],
+          "calcs": [
+            "min",
+            "max",
+            "mean"
+          ],
           "displayMode": "table",
           "placement": "bottom",
           "showLegend": true
@@ -735,7 +817,11 @@
       "id": 10,
       "options": {
         "legend": {
-          "calcs": ["min", "max", "mean"],
+          "calcs": [
+            "min",
+            "max",
+            "mean"
+          ],
           "displayMode": "table",
           "placement": "bottom",
           "showLegend": true
@@ -845,7 +931,11 @@
       "id": 9,
       "options": {
         "legend": {
-          "calcs": ["min", "max", "mean"],
+          "calcs": [
+            "min",
+            "max",
+            "mean"
+          ],
           "displayMode": "table",
           "placement": "bottom",
           "showLegend": true
@@ -969,7 +1059,11 @@
       "id": 11,
       "options": {
         "legend": {
-          "calcs": ["min", "max", "mean"],
+          "calcs": [
+            "min",
+            "max",
+            "mean"
+          ],
           "displayMode": "table",
           "placement": "bottom",
           "showLegend": true
@@ -995,10 +1089,12 @@
       "type": "timeseries"
     }
   ],
-  "refresh": false,
+  "refresh": "",
   "schemaVersion": 37,
   "style": "dark",
-  "tags": ["ok"],
+  "tags": [
+    "ok"
+  ],
   "templating": {
     "list": []
   },
@@ -1010,6 +1106,6 @@
   "timezone": "",
   "title": "Übersicht Solar",
   "uid": "8wFrHwb4k",
-  "version": 43,
+  "version": 44,
   "weekStart": ""
 }

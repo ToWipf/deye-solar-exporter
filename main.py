@@ -18,6 +18,7 @@ def buildSite(url, user, password):
 
     if (dataWeb != None):
         prom_output += "watt {}\n".format(dataWeb.webdata_now_p)
+        prom_output += "today_e {}\n".format(dataWeb.webdata_today_e)
         prom_output += "total_e {}\n".format(dataWeb.webdata_total_e)
         prom_output += "online 1"
 

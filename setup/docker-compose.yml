@@ -1,13 +1,15 @@
 version: "3"
 services:
   grafana:
+    container_name: grafana
     image: grafana/grafana:9.3.6
     ports:
       - "3000:3000"
     volumes:
       - ./grafana_data/:/var/lib/grafana
-
+  
   prometheus:
+    container_name: prometheus
     image: prom/prometheus
     ports:
       - "9090:9090"
@@ -15,8 +17,9 @@ services:
       - ./prometheus_data/:/prometheus/
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
     command: "--web.enable-admin-api --storage.tsdb.retention.time=790d --config.file=/etc/prometheus/prometheus.yml --storage.tsdb.path=/prometheus --web.enable-lifecycle"
-
+  
   solar-exporter:
+    container_name: solar-exporter
     image: solar-exporter
     ports:
       - "9942:9942"

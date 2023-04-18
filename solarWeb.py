@@ -8,6 +8,7 @@ MAXTRYS = 10
 class SolarDataWeb:
     def __init__(self):
         self.webdata_now_p = 0
+        self.webdata_today_e = 0.0
         self.webdata_total_e = 0.0
 
 
@@ -20,6 +21,10 @@ def getWebWatt(url, user, password):
                 left_texter = zeile.find('"', 0, len(zeile)) + 1
                 right_texter = zeile.find('"', left_texter, len(zeile))
                 sdw.webdata_now_p = int(zeile[left_texter:right_texter])
+            if 'var webdata_today_e' in zeile:
+                left_texter = zeile.find('"', 0, len(zeile)) + 1
+                right_texter = zeile.find('"', left_texter, len(zeile))
+                sdw.webdata_today_e = float(zeile[left_texter:right_texter])
             if 'var webdata_total_e' in zeile:
                 left_texter = zeile.find('"', 0, len(zeile)) + 1
                 right_texter = zeile.find('"', left_texter, len(zeile))
@@ -44,6 +49,7 @@ if __name__ == '__main__':
     sd = doTryWebWatt("192.168.2.15", "admin", "admin")
     if (sd != None):
         print(sd.webdata_now_p)
+        print(sd.webdata_today_e)
         print(sd.webdata_total_e)
     else:
         print("Keine Verbindung")

@@ -15,7 +15,7 @@ class SolarDataWeb:
 def getWebWatt(url, user, password):
     try:
         sdw = SolarDataWeb()
-        data = requests.get("http://{}/status.html".format(url), auth=(user, password), timeout=10)
+        data = requests.get("http://{}/status.html".format(url), auth=(user, password), timeout=2)
         for zeile in data.text.split('\n'):
             if 'var webdata_now_p' in zeile:
                 left_texter = zeile.find('"', 0, len(zeile)) + 1

@@ -49,3 +49,5 @@ current{panel="2"} 8.1
 temperature 32.7
 executiontime 22
 ```
+
+Example Setup: [Readme](setup/readme.md)

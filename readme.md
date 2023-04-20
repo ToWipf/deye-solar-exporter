@@ -40,6 +40,7 @@ http://127.0.0.1:9942
 ```yml
 # Solar Exporter
 watt 555
+today_e 11.1
 total_e 22.2
 online 1
 voltage{panel="1"} 31.1

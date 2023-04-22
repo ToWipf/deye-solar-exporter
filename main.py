@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import solarApi, solarWeb
+import solarModbus, solarWeb
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import time
 import os
@@ -23,13 +23,13 @@ def buildSite(url, user, password):
         prom_output += "online 1"
 
         # Die erweiterten Daten nur holen, wenn das Geraet auch online ist
-        dataApi = solarApi.getSolarData(url)
-        if (dataApi):
-            prom_output += "\nvoltage{panel=\"1\"} " + str(dataApi.p1Voltage)
-            prom_output += "\ncurrent{panel=\"1\"} " + str(dataApi.p1Current)
-            prom_output += "\nvoltage{panel=\"2\"} " + str(dataApi.p2Voltage)
-            prom_output += "\ncurrent{panel=\"2\"} " + str(dataApi.p2Current)
-            prom_output += "\ntemperature " + str(dataApi.temperature)
+        dataModbus = solarModbus.getSolarData(url)
+        if (dataModbus):
+            prom_output += "\nvoltage{panel=\"1\"} " + str(dataModbus.p1Voltage)
+            prom_output += "\ncurrent{panel=\"1\"} " + str(dataModbus.p1Current)
+            prom_output += "\nvoltage{panel=\"2\"} " + str(dataModbus.p2Voltage)
+            prom_output += "\ncurrent{panel=\"2\"} " + str(dataModbus.p2Current)
+            prom_output += "\ntemperature " + str(dataModbus.temperature)
     else:
         prom_output += "watt 0\nonline 0"
 

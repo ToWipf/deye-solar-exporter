@@ -6,7 +6,7 @@ MAXTRYS = 10
 DEYE_CMD_PATH = "/deye_cmd"
 
 
-class SolarDataApi:
+class SolarDataModbus:
     def __init__(self):
         self.p1Voltage = 0
         self.p1Current = 0
@@ -58,7 +58,7 @@ def doSolarXMBdec(wr_ipadress, cmd):
 
 
 def getSolarData(wr_ipadress):
-    sd = SolarDataApi()
+    sd = SolarDataModbus()
     sd.p1Voltage = doSolarXMBdec(wr_ipadress, "006d0001")
     sd.p1Current = doSolarXMBdec(wr_ipadress, "006e0001")
     sd.p2Voltage = doSolarXMBdec(wr_ipadress, "006f0001")

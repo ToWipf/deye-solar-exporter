@@ -201,7 +201,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Watt (API)"
+              "options": "Watt (Modbus)"
             },
             "properties": [
               {
@@ -256,7 +256,7 @@
           "editorMode": "code",
           "expr": "sum ((current{} * voltage{}) > 0) < 900",
           "hide": false,
-          "legendFormat": "Watt (API)",
+          "legendFormat": "Watt (Modbus)",
           "range": true,
           "refId": "B"
         }

@@ -19,8 +19,8 @@ services:
     command: "--web.enable-admin-api --storage.tsdb.retention.time=790d --config.file=/etc/prometheus/prometheus.yml --storage.tsdb.path=/prometheus --web.enable-lifecycle"
 
   solar-exporter:
-    container_name: solar-exporter
-    image: solar-exporter
+    container_name: solar_exporter
+    image: solar_exporter
     ports:
       - "9942:9942"
     environment:

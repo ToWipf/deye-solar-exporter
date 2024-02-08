@@ -5,7 +5,7 @@
 for example on an Raspberry Pi or in Docker-for-Windows
 
 ```sh
-apt install docker docker-compose
+apt install docker docker-compose docker-buildx
 ```
 
 ## Bulid solar-exporter Container

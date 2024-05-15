@@ -5,13 +5,13 @@
 for example on an Raspberry Pi or in Docker-for-Windows
 
 ```sh
-apt install docker docker-compose docker-buildx
+apt install docker docker-compose
 ```
 
-## Bulid solar-exporter Container
+## Bulid solar_exporter Container
 
 ```sh
-DOCKER_BUILDKIT=1 docker build --progress=plain -t solar-exporter .
+DOCKER_BUILDKIT=1 docker build --progress=plain -t solar_exporter .
 ```
 
 ## docker-compose Settings

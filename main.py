@@ -42,6 +42,7 @@ def buildSite(url, user, password):
 class doWeb(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
+        self.send_header("Content-Type", "text/plain")
         self.end_headers()
         if self.path == "/test":
             self.wfile.write("ok".encode())

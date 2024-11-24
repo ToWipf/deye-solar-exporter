@@ -1,4 +1,4 @@
-# Ausführliche Anleitung zur Einrichtung von docker deye-solar-exporter mit Prometheus und Grafana
+# Ausführliche Anleitung zur Einrichtung des Deye-solar-exporters mit Prometheus und Grafana
 
 ## Docker installieren
 
@@ -13,9 +13,8 @@ apt install docker-compose
 git clone https://github.com/ToWipf/deye-solar-exporter.git
 ```
 
-## Konfiguration
+## Konfiguration der docker-compose.yml
 
-docker-compose.yml 
 ```yml
 solar-exporter:
   container_name: solar_exporter                      # Name des Containers
@@ -27,6 +26,8 @@ solar-exporter:
     DEYE_IP: 192.168.2.15                             # IP-Adresse des Deye Solar Wechselrichters
     DEYE_USER: admin                                  # Benutzername des Deye Solar Wechselrichters
     DEYE_PASSWORD: admin                              # Passwort des Deye Solar Wechselrichters
+
+... Prometheus teil ->  --storage.tsdb.retention.time=790d # Einstellung wie lage die Daten gespeicher werden sollen
 ```
 
 ## Docker Volume Ordner vorbereiten
@@ -57,7 +58,7 @@ docker-compose logs -f          # Logs anzeigen
 Web Aufrufe: 
 
 - Solar-exporter: http://localhost:9942/metrics                       # Ausgabedauer bis zu einer Minute
-- Prometheus:     http://localhost:9090/targets?search=               # Hier sollte nach zwei bis drei Minute alles "grün" sein
+- Prometheus:     http://localhost:9090/targets?search=               # Hier sollte nach zwei bis drei Minuten alles "grün" sein
 - Grafana:        http://localhost:3000                               # Anmeldung: per admin/admin 
   
 ## Grafana Einstellungen

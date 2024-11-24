@@ -4,7 +4,7 @@ Prometheus Exporter for Deye Solar inverter. Works with firmware version `MW3_16
 
 Depending on the WiFi stability, the data is queried faster or slower. To give the exporter enough time, the Prometheus timeout should be set to at least one minute.
 
-Example Docker Setup: [Readme](setup/readme.md) (Runs fine on a Raspberry Pi with Docker)
+Example Docker Setup: [Readme](setup/readme.md) (Runs fine on a Raspberry Pi with Docker). Deutsche ausführliche Anleitung [Liesmich](setup/liesmich.md) 
 
 The exporter is based on https://github.com/s10l/deye-logger-at-cmd
 

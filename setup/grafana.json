@@ -21,11 +21,10 @@
       }
     ]
   },
-  "description": "",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
+  "id": 2,
   "links": [
     {
       "asDropdown": false,
@@ -42,7 +41,6 @@
       "url": ""
     }
   ],
-  "liveNow": false,
   "panels": [
     {
       "datasource": {
@@ -82,6 +80,8 @@
       },
       "id": 6,
       "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -91,9 +91,10 @@
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true
+        "showThresholdMarkers": true,
+        "sizing": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "11.3.1",
       "targets": [
         {
           "datasource": {
@@ -120,11 +121,13 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 98,
             "gradientMode": "opacity",
@@ -133,6 +136,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 2,
             "pointSize": 5,
@@ -201,7 +205,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Watt (Modbus)"
+              "options": "Watt (API)"
             },
             "properties": [
               {
@@ -238,6 +242,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "11.3.1",
       "targets": [
         {
           "datasource": {
@@ -256,12 +261,12 @@
           "editorMode": "code",
           "expr": "sum ((current{} * voltage{}) > 0) < 900",
           "hide": false,
-          "legendFormat": "Watt (Modbus)",
+          "legendFormat": "Watt (API)",
           "range": true,
           "refId": "B"
         }
       ],
-      "title": "Watt",
+      "title": "Leistung",
       "type": "timeseries"
     },
     {
@@ -274,6 +279,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -281,6 +287,7 @@
             "axisSoftMax": 1,
             "axisSoftMin": 0,
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 28,
             "gradientMode": "none",
@@ -289,6 +296,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "stepAfter",
             "lineWidth": 1,
             "pointSize": 1,
@@ -342,6 +350,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "11.3.1",
       "targets": [
         {
           "datasource": {
@@ -396,6 +405,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -403,9 +413,11 @@
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "11.3.1",
       "targets": [
         {
           "datasource": {
@@ -418,7 +430,7 @@
           "refId": "A"
         }
       ],
-      "title": "Tagesleistung",
+      "title": "Monatsleistung",
       "type": "stat"
     },
     {
@@ -431,7 +443,7 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 2,
+          "decimals": 3,
           "mappings": [],
           "min": 0,
           "thresholds": {
@@ -479,6 +491,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -486,9 +499,11 @@
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "11.3.1",
       "targets": [
         {
           "datasource": {
@@ -515,11 +530,13 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 4,
             "gradientMode": "opacity",
@@ -528,6 +545,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -603,6 +621,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "11.3.1",
       "targets": [
         {
           "datasource": {
@@ -629,11 +648,13 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 5,
             "gradientMode": "opacity",
@@ -642,6 +663,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -717,6 +739,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "11.3.1",
       "targets": [
         {
           "datasource": {
@@ -743,11 +766,13 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 100,
             "gradientMode": "opacity",
@@ -756,6 +781,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -831,6 +857,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "11.3.1",
       "targets": [
         {
           "datasource": {
@@ -843,7 +870,7 @@
           "refId": "A"
         }
       ],
-      "title": "Watt",
+      "title": "Leistung",
       "type": "timeseries"
     },
     {
@@ -857,11 +884,13 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 100,
             "gradientMode": "opacity",
@@ -870,6 +899,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "stepAfter",
             "lineWidth": 1,
             "pointSize": 5,
@@ -945,6 +975,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "11.3.1",
       "targets": [
         {
           "datasource": {
@@ -971,11 +1002,13 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 7,
             "gradientMode": "opacity",
@@ -984,6 +1017,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "stepAfter",
             "lineWidth": 3,
             "pointSize": 5,
@@ -1073,6 +1107,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "11.3.1",
       "targets": [
         {
           "datasource": {
@@ -1089,9 +1124,9 @@
       "type": "timeseries"
     }
   ],
+  "preload": false,
   "refresh": "",
-  "schemaVersion": 37,
-  "style": "dark",
+  "schemaVersion": 40,
   "tags": [
     "ok"
   ],
@@ -1104,8 +1139,8 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Übersicht Solar",
-  "uid": "8wFrHwb4k",
-  "version": 44,
+  "title": "Übersicht Solar 2",
+  "uid": "8wFrHwb4kx",
+  "version": 1,
   "weekStart": ""
 }

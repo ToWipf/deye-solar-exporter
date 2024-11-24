@@ -12,7 +12,7 @@ The exporter is based on https://github.com/s10l/deye-logger-at-cmd
 
 Dashboard example: [grafana.json](setup/grafana.json)
 
-![image](setup/grafana.png)
+![image](setup/dashboard.png)
 
 ## Build the Container
 
@@ -31,7 +31,7 @@ docker run -d --name solar_exporter \
     solar_exporter
 ```
 
-## Example output 
+## Example output at http://127.0.0.1:9942
 
 ```yml
 # Solar Exporter
@@ -46,5 +46,3 @@ current{panel="2"} 8.1
 temperature 32.7
 executiontime 22
 ```
-
-http://127.0.0.1:9942

@@ -11,6 +11,7 @@ apt install docker-compose
 
 ```sh
 git clone https://github.com/ToWipf/deye-solar-exporter.git
+cd deye-solar-exporter
 ```
 
 ## Konfiguration der docker-compose.yml

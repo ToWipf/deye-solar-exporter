@@ -36,7 +36,8 @@ solar-exporter:
 ```sh
 mkdir setup/grafana_data
 mkdir setup/prometheus_data
-chwon 472 setup/grafana_data
+chown 472 setup/grafana_data
+chown 65534:65534 setup/prometheus_datab
 ```
 
 ## Bauen des Dockerimages

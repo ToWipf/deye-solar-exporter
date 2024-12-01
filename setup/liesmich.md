@@ -37,7 +37,7 @@ solar-exporter:
 mkdir setup/grafana_data
 mkdir setup/prometheus_data
 chown 472 setup/grafana_data
-chown 65534:65534 setup/prometheus_datab
+chown 65534:65534 setup/prometheus_data
 ```
 
 ## Bauen des Dockerimages
@@ -65,7 +65,13 @@ Web Aufrufe:
   
 ## Grafana Einstellungen
 
-- Connections -> Data Source -> add -> Prometheus -> Connection `http://prometheus:9090` -> save and test
-- Dashboards -> New -> Import -> Datei: `setup/grafana.json`  auswählen -> Import    
-- Grafana Configuration -> Preferences -> Home Dashboard -> "General/Übersicht Solar" -> save
-- Grafana Configuration -> Preferences -> Language -> "Deutsch" -> save
+- General -> Connections -> Data Source -> add Data Source -> Prometheus -> Connection -> Prometheus server URL -> `http://prometheus:9090` -> save and test
+- General -> Dashboards -> New - Import -> Upload dashboard JSON file -> `setup/grafana.json` -> Import
+- Grafana -> Default preferences -> Home Dashboard -> "Dashboards/Überscht Solar" -> save
+
+## Hinweis zum Wert von "Monatsleistung"
+- wenn der Deye Wechselrichter eine Verbindung ins Internet hat, wird dieser Wert täglich über das Internet auf 0 gesetzt. Der Wert hat also dann die Tagesleistung. Die Beschriftung sollte dann in Grafana geändert werden
+- falls der Deye Wechselrichter keine Verbindung ins Internet hat, summiert sich dieser Wert, bis er manuell rückgesetzt wird. 
+- Nur wenn der zum Monatsbeginn zurückgesetzt wird, passt die Beschriftung
+- Befehl dazu: https://github.com/jedie/inverter-connect.git  Befehl : ./cli.py set-time
+- Um den Monatlichen reset zu automatisieren, gibt es einen weiteren Container, welcher im Ordner `monthly_reset` zu finden ist

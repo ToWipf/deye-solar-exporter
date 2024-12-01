@@ -21,8 +21,8 @@ edit "DEYE_IP, DEYE_USER, DEYE_PASSWORD" in ./setup/docker-compose.yml
 ```sh
 mkdir setup/grafana_data
 mkdir setup/prometheus_data
-chmod 777 setup/grafana_data
-chmod 777 setup/prometheus_data
+chown 472 setup/grafana_data
+chown 65534:65534 setup/prometheus_data
 ```
 
 ## Start

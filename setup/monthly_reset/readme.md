@@ -6,7 +6,8 @@ This container resets the daily power counter of the Deye inverter to 0 kWh ever
 
 This is optional and not necessary. It is only for statistics.
 
-Build
+## Build
+
 ```sh
 #Config File inverter-connect.toml
 ip = "192.168.2.15" # Change to your Deye IP
